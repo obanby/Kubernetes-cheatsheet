@@ -5,6 +5,7 @@ Running a particular image on a cluster
 `kubectl run hello-minkube --image=gcr.io/google_containers/echoserver:1.4 --port=8080`
 
 Expose this port to the host
+
 `kubectl expose deployment hello-minkube --type=NodePort`
 
 `minikube service hello-minkube --url`
