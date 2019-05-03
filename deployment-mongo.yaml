@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: mongo
+spec:
+  selector:
+      matchLabels:
+        db: mongodb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+       db: mongodb
+    spec:
+     containers:
+       - name: mongodb
+         image: mongo
+         ports:
+          - containerPort: 27017
