@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: goandnode.example.com
+ labels:
+  app: goandnode
+spec:
+ containers:
+ - name: k8s-demo
+   image: registry.gitlab.com/elbanby/testingregstry:v1.0.0
+   ports:
+   - containerPort: 3000
