@@ -116,5 +116,16 @@ Health check types
  2- livenessProbe
  3- commands
 
+Name space convention
+
+`<service-name>-<name-space>.svc.cluster.local`
+
+Find DNS configuration
+
+1- use busy busy box
+2- locate `/etc/resolv.conf`
+
+
+
 Kubernetes cheat sheet
 https://kubernetes.io/docs/reference/kubectl/cheatsheet/
