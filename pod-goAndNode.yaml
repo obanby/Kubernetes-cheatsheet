@@ -1,12 +1,23 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
- name: goandnode.example.com
+ name: goandnode
  labels:
   app: goandnode
 spec:
- containers:
- - name: k8s-demo
-   image: registry.gitlab.com/elbanby/testingregstry:v1.0.0
-   ports:
-   - containerPort: 3000
+ selector:
+  matchLabels:
+   run: my-goandnoe
+ replicas: 2
+ template:
+   metadata:
+    labels:
+     run: my-goandnoe
+   spec:
+    containers:
+    - name: k8s-demo
+      image: registry.gitlab.com/elbanby/testingregstry/k8s-demo:v1.0.0
+      ports:
+      - containerPort: 3000
+    imagePullSecrets:
+    - name: gitlabregistry

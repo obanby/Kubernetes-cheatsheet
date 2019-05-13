@@ -76,7 +76,49 @@ Operates on TCP and UPD layer so no application intelligence routing
 
 Services has label selectors that is a list of all the labels pods must posses in order for it to receive traffic from the service
 
+### kubectl
+
+> It's the main k8s CLI tool. It converts user-friendly commands into JSON payload required by the API server. It uses configuration file  to know which cluster and API server endpoints to POST to.
+> - The kubernetes book 2019
+
+It lives `~/.kube/config` it contains definition for
+  - clusters:
+    * name
+    * certificate
+    * API end point
+  - users
+    * name
+    * username
+    * credentials
+  - contexts
+    * cluster
+    * user
+
+### Pods
+
+  - Api version
+  - kind
+  - metadata
+  - spec
+
 ## Useful commands
+
+To view kubectl config
+
+`kubectl config view`
+
+Getting kubectl context
+
+`kubectl config get-contexts`
+
+To choose a context
+
+`kubectl config get-contexts <context-name>`
+
+To check current context
+
+`kubectl config current-context`
+
 
 Running a particular image on a cluster
 
@@ -207,7 +249,7 @@ Find DNS configuration
 2- Kubernetes cheat sheet https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 
 
-## For later/ remember 
+## For later/ remember
 // Container runtime interface (CRI)
 
 // Runtime Classes
