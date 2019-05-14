@@ -9,6 +9,11 @@ It is basically a cluster for running apps and an orchestrator of Cloud native m
 
 ### K8S Components
 
+#### Fundamental concepts:
+  - Desired state
+  - Current state
+  - Declarative model
+
 #### 1- Masters , Nodes and DNS
 ##### Master:  
 multi-master hight availability (control plane) [ 3 - 5 multi master recommended]
@@ -100,6 +105,15 @@ It lives `~/.kube/config` it contains definition for
   - kind
   - metadata
   - spec
+
+### Deployments
+  - Deployments manage replica-sets, replica-sets manages pods
+
+  - apiVersion
+  - kind
+  - metadata (name, labels)
+  - spec (Anything below here relates to the pod)
+  - spec.template.spec (Anything below here relates to the container)
 
 ## Useful commands
 
