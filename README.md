@@ -133,10 +133,51 @@ To check current context
 
 `kubectl config current-context`
 
+To create a deployment from a file 
+
+`kubectl create -f <file-name>`
+
+To create objects from folders 
+
+`kubectl create -f <folder-path>`
+
+To make changes to a deployment/services within a file 
+
+`kubectl apply -f <file-name>`
+
+To create an object from a url
+
+`kubectl apply -f <url>`
 
 Running a particular image on a cluster
 
 `kubectl run hello-minkube --image=gcr.io/google_containers/echoserver:1.4 --port=8080`
+
+To view deployments with more info
+
+`kubectl get deployments -o wide`
+
+To check all the name spaces 
+
+`kubect get namespaces`
+
+N.B (Default name space is used by default! also k8s uses kube-system & kube-public behind the scenes so don't deploy there)
+
+To run kubectl commands aganinst any other name space but the default 
+
+`kubectl <command> -n <name-space>`
+
+To get objects in all name spaces 
+
+`kubectl <command> --all-namespaces`
+
+To sort your objects while inspecting
+
+`kubectl get <object> --sort-by=<query! ex: .metadata.name>`
+
+To watch an object in k8s 
+
+`kubectl get <object> -w`
 
 Expose this port to the host
 
@@ -153,6 +194,20 @@ Before we can launch a container based on an image we have to create a pod defin
 To delete a deployment
 
 `kubectl delete deployment <deployment-name>`
+
+To delete all objects of a kind with one command
+
+`kubectl delete <object> --all`
+
+N.B: Be catious it will wipe it!!
+
+Feeling more adventrous with your deleteing!! Force it
+
+`kubectl delete <object> --all --grace-period=0 --force`
+
+To delete with a label 
+
+`kubectl delete <object> -l <label ex env=staging>`
 
 To apply configs from file to cluster
 
@@ -261,7 +316,7 @@ Find DNS configuration
 ## Resources
 1- The Kubernetes Book 2019
 2- Kubernetes cheat sheet https://kubernetes.io/docs/reference/kubectl/cheatsheet/
-
+3- Kubernetes Native tools (course)
 
 ## For later/ remember
 // Container runtime interface (CRI)
