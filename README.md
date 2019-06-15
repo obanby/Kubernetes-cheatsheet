@@ -153,6 +153,10 @@ Running a particular image on a cluster
 
 `kubectl run hello-minkube --image=gcr.io/google_containers/echoserver:1.4 --port=8080`
 
+To scale a deployment 
+
+`kubectl scale --replicas=<number-of-replicas> <deploymentname>`
+
 To view deployments with more info
 
 `kubectl get deployments -o wide`
@@ -170,6 +174,48 @@ To run kubectl commands aganinst any other name space but the default
 To get objects in all name spaces 
 
 `kubectl <command> --all-namespaces`
+
+To see everything you have 
+
+`kubectl get all`
+
+To check pods labels 
+
+`kubectl get pods --show-labels`
+
+To add a label after deployment 
+
+`kubectl label pod/<pod-name> <label>=<value> --overwrite`
+
+To delete a label after deployment 
+
+`kubectl label pod/<pod-name> <key>-`
+
+To search with labels 
+
+`kubectl get pods --selector <key>=<value-of-search>`
+
+To search with multilabels
+
+`kubectl get pods --selector <key>=<value-of-search>,<key>=<value-of-search>`
+
+To search for unequality 
+
+`kubectl get pods --selector <key>!=<value-of-search>`
+
+To search using the in operator 
+
+`kubectl get pods -l  '<key> in (1.2,2.0)'`
+
+N.B: you can use -l instead of --selector ;) 
+
+To search using the notin operator 
+
+`kubectl get pods -l  '<key> notin (1.2,2.0)'`
+
+To delete using labels 
+
+`kubectl delete pods -l <key>=<valu-of-search>`
 
 To sort your objects while inspecting
 
