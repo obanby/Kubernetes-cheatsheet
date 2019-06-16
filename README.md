@@ -259,6 +259,11 @@ To apply configs from file to cluster
 
 `kubectl apply -f <file-path.yaml/json>`
 
+To create a configmap from an env file 
+
+`kubectl create configmap game-config-env-file \
+       --from-env-file=<file>.properties`
+
 Get information about nodes
 
 `kubectl get nodes`
