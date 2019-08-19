@@ -364,6 +364,11 @@ Find DNS configuration
 1- use busy busy box
 2- locate `/etc/resolv.conf`
 
+
+To get cluster information 
+
+`kubectl cluster-info`
+
 ## Resources
 1- The Kubernetes Book 2019
 2- Kubernetes cheat sheet https://kubernetes.io/docs/reference/kubectl/cheatsheet/
