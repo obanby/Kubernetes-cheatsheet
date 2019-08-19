@@ -117,6 +117,10 @@ It lives `~/.kube/config` it contains definition for
 
 ## Useful commands
 
+To find out about an object structure 
+
+`kubectl explain <object>`
+
 To view kubectl config
 
 `kubectl config view`
