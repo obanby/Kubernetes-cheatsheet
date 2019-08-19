@@ -121,6 +121,10 @@ To find out about an object structure
 
 `kubectl explain <object>`
 
+To find our more about the object structure 
+
+`kubectl explain <pod.spec>`
+
 To view kubectl config
 
 `kubectl config view`
