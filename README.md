@@ -393,3 +393,20 @@ To get cluster information
 2- Kompose (Docker compose to k8s objects)
 3- kubedef (sync across clusters) 
 4- kubeadmin (Ease the k8s installation process)
+
+
+## Liveness probe
+
+There are three types of livness probe avialable on k8s:
+
+1- http get probe (sends a get request to an end point)
+2- TCP socket connection 
+3- Exec probe (will execute commands inside the container and checks the status code returned)
+
+
+```
+livnessProbe:
+  httpGet:
+    path: /<anyEndPoint>
+    port: <anyPort>
+```
