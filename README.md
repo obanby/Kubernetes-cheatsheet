@@ -387,6 +387,10 @@ To get a logs for a previous conatiner which got restarted
 
 N.B: When looking on the exit code for a restarted container. Look for the Exit code section which is 128 + x = ExitCode 
 
+To delete a replica controller without deleting the pods it manages 
+
+`kubectl delete rc <rc-name> --cascade=false`
+
 ## Resources
 1- The Kubernetes Book 2019
 2- Kubernetes cheat sheet https://kubernetes.io/docs/reference/kubectl/cheatsheet/
