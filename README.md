@@ -372,6 +372,10 @@ Find DNS configuration
 1- use busy busy box
 2- locate `/etc/resolv.conf`
 
+OR: 
+
+kubectl exec <pod-name> env
+
 
 To get cluster information 
 
