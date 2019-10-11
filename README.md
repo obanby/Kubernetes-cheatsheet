@@ -1,5 +1,4 @@
-# Learning Kubernetes
-
+# Learning Kubernetes 
 ## About
 
 This repo is intended to be my personal studying notes for k8s. It'll continue growing with time. I'll try my best to document all resources where I got the information from.
@@ -428,3 +427,58 @@ livnessProbe:
     path: /<anyEndPoint>
     port: <anyPort>
 ```
+
+## Some notes 
+
+k8s command is == Docker ENTRYPOINT // the executable that's executed inside the container 
+k8s args is === Docker CMD // the arguments passed to the executable 
+
+```
+ spec:
+  containers:
+  - image: luksa/fortune:args
+  args: ["2"]
+```
+
+> Like the container’s command and arguments, the list of environment variables also cannot be updated after the pod is created.
+
+```
+ spec:
+  containers:
+  - image: luksa/fortune:env
+    env:
+    - name: INTERVAL
+      value: "30"
+```
+
+To refrence an existing enviroment variable, make sure you use $()
+
+```
+env:
+- name: host
+  value: "fakesite"
+- name: url
+  value: "http://$(host):8080"
+```
+
+## Config maps 
+
+`kubectl create configmap`
+
+```
+$ kubectl create configmap <configmap-name> --from-literal=<key>=<value>
+configmap "fortune-config" created
+```
+
+To describe a config map in a yaml format 
+`kubectl get configmap <configmap-name> -o yaml`
+
+To create a configmap from a config file or .env file 
+`kubectl create configmap <name> --from-file=./.env`
+
+To nest all configuration from a file under a custom key 
+`kubectl create configmap <name> --from-file=<custom-key>=<file-path>`
+
+To create all configuration from a directory and use their file name as key 
+`kubectl create configmap <name> --from-file=<custom-key>=<dir-path>`
+
