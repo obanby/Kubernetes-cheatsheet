@@ -482,3 +482,5 @@ To nest all configuration from a file under a custom key
 To create all configuration from a directory and use their file name as key 
 `kubectl create configmap <name> --from-file=<custom-key>=<dir-path>`
 
+## Volumes
+
