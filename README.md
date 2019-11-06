@@ -394,6 +394,25 @@ To delete a replica controller without deleting the pods it manages
 
 `kubectl delete rc <rc-name> --cascade=false`
 
+To patch a resource file 
+`kubectl patch deployment kubia -p '{"spec": {"minReadySeconds": 10}}'`
+
+To change the image of any resource that contains a container
+`kubectl set image deployment <contianer name> <newimage>`
+example: `kubectl set image deployment kubia nodejs=luksa/kubia:v2`
+
+## Editing a resource 
+
+`kubectl edit`: Opens the object’s manifest in your default editor. After making changes, saving the file, and exiting the editor, the object is updated.
+
+`kubectl patch`: Modifies individual properties of an object.
+
+`kubectl apply`:  Modifies the object by applying property values from a full YAML or JSON file. If the object specified in the YAML/JSON doesn’t exist yet, it’s created. The file needs to contain the full definition of the resource (it can’t include only the fields you want to update, as is the case with kubectl patch).
+
+`kubectl replace`: Replaces the object with a new one from a YAML/JSON file. In con-trast to the apply command, this command requires the object to exist; otherwise it prints an error.
+
+`kubectl set image`: Changes the container image defined in a Pod, ReplicationControl- ler’s template, Deployment, DaemonSet, Job, or ReplicaSet.
+
 ## Resources
 1- The Kubernetes Book 2019
 2- Kubernetes cheat sheet https://kubernetes.io/docs/reference/kubectl/cheatsheet/
