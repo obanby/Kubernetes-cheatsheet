@@ -1,4 +1,4 @@
-# Learning Kubernetes 
+# Learning Kubernetes
 ## About
 
 This repo is intended to be my personal studying notes for k8s. It'll continue growing with time. I'll try my best to document all resources where I got the information from.
@@ -116,11 +116,11 @@ It lives `~/.kube/config` it contains definition for
 
 ## Useful commands
 
-To find out about an object structure 
+To find out about an object structure
 
 `kubectl explain <object>`
 
-To find our more about the object structure 
+To find our more about the object structure
 
 `kubectl explain <pod.spec>`
 
@@ -140,15 +140,15 @@ To check current context
 
 `kubectl config current-context`
 
-To create a deployment from a file 
+To create a deployment from a file
 
 `kubectl create -f <file-name>`
 
-To create objects from folders 
+To create objects from folders
 
 `kubectl create -f <folder-path>`
 
-To make changes to a deployment/services within a file 
+To make changes to a deployment/services within a file
 
 `kubectl apply -f <file-name>`
 
@@ -160,7 +160,7 @@ Running a particular image on a cluster
 
 `kubectl run hello-minkube --image=gcr.io/google_containers/echoserver:1.4 --port=8080`
 
-To scale a deployment 
+To scale a deployment
 
 `kubectl scale --replicas=<number-of-replicas> <deploymentname>`
 
@@ -168,37 +168,37 @@ To view deployments with more info
 
 `kubectl get deployments -o wide`
 
-To check all the name spaces 
+To check all the name spaces
 
 `kubect get namespaces`
 
 N.B (Default name space is used by default! also k8s uses kube-system & kube-public behind the scenes so don't deploy there)
 
-To run kubectl commands aganinst any other name space but the default 
+To run kubectl commands aganinst any other name space but the default
 
 `kubectl <command> -n <name-space>`
 
-To get objects in all name spaces 
+To get objects in all name spaces
 
 `kubectl <command> --all-namespaces`
 
-To see everything you have 
+To see everything you have
 
 `kubectl get all`
 
-To check pods labels 
+To check pods labels
 
 `kubectl get pods --show-labels`
 
-To add a label after deployment 
+To add a label after deployment
 
 `kubectl label pod/<pod-name> <label>=<value> --overwrite`
 
-To delete a label after deployment 
+To delete a label after deployment
 
 `kubectl label pod/<pod-name> <key>-`
 
-To search with labels 
+To search with labels
 
 `kubectl get pods --selector <key>=<value-of-search>`
 
@@ -206,21 +206,21 @@ To search with multilabels
 
 `kubectl get pods --selector <key>=<value-of-search>,<key>=<value-of-search>`
 
-To search for unequality 
+To search for unequality
 
 `kubectl get pods --selector <key>!=<value-of-search>`
 
-To search using the in operator 
+To search using the in operator
 
 `kubectl get pods -l  '<key> in (1.2,2.0)'`
 
-N.B: you can use -l instead of --selector ;) 
+N.B: you can use -l instead of --selector ;)
 
-To search using the notin operator 
+To search using the notin operator
 
 `kubectl get pods -l  '<key> notin (1.2,2.0)'`
 
-To delete using labels 
+To delete using labels
 
 `kubectl delete pods -l <key>=<valu-of-search>`
 
@@ -228,7 +228,7 @@ To sort your objects while inspecting
 
 `kubectl get <object> --sort-by=<query! ex: .metadata.name>`
 
-To watch an object in k8s 
+To watch an object in k8s
 
 `kubectl get <object> -w`
 
@@ -258,7 +258,7 @@ Feeling more adventrous with your deleteing!! Force it
 
 `kubectl delete <object> --all --grace-period=0 --force`
 
-To delete with a label 
+To delete with a label
 
 `kubectl delete <object> -l <label ex env=staging>`
 
@@ -266,7 +266,7 @@ To apply configs from file to cluster
 
 `kubectl apply -f <file-path.yaml/json>`
 
-To create a configmap from an env file 
+To create a configmap from an env file
 
 `kubectl create configmap game-config-env-file \
        --from-env-file=<file>.properties`
@@ -371,16 +371,16 @@ Find DNS configuration
 1- use busy busy box
 2- locate `/etc/resolv.conf`
 
-OR: 
+OR:
 
 kubectl exec <pod-name> env
 
 
-To get cluster information 
+To get cluster information
 
 `kubectl cluster-info`
 
-To get container logs 
+To get container logs
 
 `kubectl logs <pod-name>`
 
@@ -388,9 +388,9 @@ To get a logs for a previous conatiner which got restarted
 
 `kubectl log <pod-name> --previous`
 
-N.B: When looking on the exit code for a restarted container. Look for the Exit code section which is 128 + x = ExitCode 
+N.B: When looking on the exit code for a restarted container. Look for the Exit code section which is 128 + x = ExitCode
 
-To delete a replica controller without deleting the pods it manages 
+To delete a replica controller without deleting the pods it manages
 
 `kubectl delete rc <rc-name> --cascade=false`
 
@@ -408,7 +408,7 @@ To delete a replica controller without deleting the pods it manages
 
 1- Helm    (Package mager)
 2- Kompose (Docker compose to k8s objects)
-3- kubedef (sync across clusters) 
+3- kubedef (sync across clusters)
 4- kubeadmin (Ease the k8s installation process)
 
 
@@ -417,7 +417,7 @@ To delete a replica controller without deleting the pods it manages
 There are three types of livness probe avialable on k8s:
 
 1- http get probe (sends a get request to an end point)
-2- TCP socket connection 
+2- TCP socket connection
 3- Exec probe (will execute commands inside the container and checks the status code returned)
 
 
@@ -428,10 +428,10 @@ livnessProbe:
     port: <anyPort>
 ```
 
-## Some notes 
+## Some notes
 
-k8s command is == Docker ENTRYPOINT // the executable that's executed inside the container 
-k8s args is === Docker CMD // the arguments passed to the executable 
+k8s command is == Docker ENTRYPOINT // the executable that's executed inside the container
+k8s args is === Docker CMD // the arguments passed to the executable
 
 ```
  spec:
@@ -461,7 +461,7 @@ env:
   value: "http://$(host):8080"
 ```
 
-## Config maps 
+## Config maps
 
 `kubectl create configmap`
 
@@ -470,17 +470,37 @@ $ kubectl create configmap <configmap-name> --from-literal=<key>=<value>
 configmap "fortune-config" created
 ```
 
-To describe a config map in a yaml format 
+To describe a config map in a yaml format
 `kubectl get configmap <configmap-name> -o yaml`
 
-To create a configmap from a config file or .env file 
+To create a configmap from a config file or .env file
 `kubectl create configmap <name> --from-file=./.env`
 
-To nest all configuration from a file under a custom key 
+To nest all configuration from a file under a custom key
 `kubectl create configmap <name> --from-file=<custom-key>=<file-path>`
 
-To create all configuration from a directory and use their file name as key 
+To create all configuration from a directory and use their file name as key
 `kubectl create configmap <name> --from-file=<custom-key>=<dir-path>`
 
-## Volumes
+# API
 
+To get information about the cluster master
+`kubectl cluster-info`
+
+To run proxy (to let k8s handle authentication)
+`kubectl proxy`
+
+N.B: > k8s api is on port 8001
+
+To list all your end points for k8s api
+
+```
+// in separate shell run
+kubectl proxy
+
+// in the other shell
+curl http://localhost:8001/
+```
+
+To enable REST API UI with swagger, run the api server with
+`--enable-swagger-ui=true`
