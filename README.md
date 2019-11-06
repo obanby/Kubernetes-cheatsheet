@@ -482,3 +482,27 @@ To nest all configuration from a file under a custom key
 To create all configuration from a directory and use their file name as key 
 `kubectl create configmap <name> --from-file=<custom-key>=<dir-path>`
 
+# API 
+
+To get information about the cluster master 
+`kubectl cluster-info`
+
+To run proxy (to let k8s handle authentication)
+`kubectl proxy`
+
+N.B: > k8s api is on port 8001
+
+To list all your end points for k8s api 
+
+```
+// in separate shell run 
+kubectl proxy
+
+// in the other shell 
+curl http://localhost:8001/
+```
+
+To enable REST API UI with swagger, run the api server with 
+`--enable-swagger-ui=true`
+
+
