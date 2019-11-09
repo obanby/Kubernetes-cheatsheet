@@ -523,3 +523,29 @@ curl http://localhost:8001/
 
 To enable REST API UI with swagger, run the api server with
 `--enable-swagger-ui=true`
+
+# Deployment 
+
+`kubectl create -f <file>.yaml --record`
+
+ > --record records the command in the revision history, which will be useful later 
+ 
+ // To check a deployment status 
+ `kubectl rollout status deployment <deployment-name>`
+ 
+ // To rollback a depoyment 
+`kubectl rollout undo deployment <deployment-name>`
+
+// To list the deployments revision 
+`kubectl rollout history deployment <deployment-name>`
+
+// To roll back a deployment to specific revision
+`kubectl rollout undo deployment <deployment-name> --to-revision=1`
+
+// Add the property `revisionHistoryLimit` to your deployment resource to be specify the revision limits to store
+// defaults to 2 
+
+
+
+ 
+ 
