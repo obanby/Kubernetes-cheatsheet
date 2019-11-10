@@ -404,6 +404,9 @@ example: `kubectl set image deployment kubia nodejs=luksa/kubia:v2`
 // To check what kubectl is doing in the background, set the verbose level to 6 or 9 depend how detailed you like
 `kubectl <any-command> --v 6`
 
+// To test and validate your yaml resource file 
+`k apply --dry-run=true -f <file-name>.yml`
+
 ## Editing a resource 
 
 `kubectl edit`: Opens the object’s manifest in your default editor. After making changes, saving the file, and exiting the editor, the object is updated.
