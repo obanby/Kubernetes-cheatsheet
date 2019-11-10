@@ -420,6 +420,8 @@ example: `kubectl set image deployment kubia nodejs=luksa/kubia:v2`
 1- The Kubernetes Book 2019
 2- Kubernetes cheat sheet https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 3- Kubernetes Native tools (course)
+4- https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html?fbclid=IwAR1M557FegoexSe84mjQz8qoW-ynidUr7gXrDNj7gMnm9ndxUhAm9kwgRn4
+5- Kubernetees in Action
 
 ## For later/ remember
 // Container runtime interface (CRI)
@@ -442,6 +444,7 @@ There are three types of livness probe avialable on k8s:
 2- TCP socket connection
 3- Exec probe (will execute commands inside the container and checks the status code returned)
 
+N.B: Liveness Probes are used by k8s to know when to restart a container
 
 ```
 livnessProbe:
@@ -449,6 +452,10 @@ livnessProbe:
     path: /<anyEndPoint>
     port: <anyPort>
 ```
+
+## Readiness Probes
+
+N.B: Readiness probes are used by k8s to know when a container is ready to accept traffic. A pod is considered ready when all its containers are ready
 
 ## Some notes
 
