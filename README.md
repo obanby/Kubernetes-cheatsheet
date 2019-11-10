@@ -555,7 +555,12 @@ To enable REST API UI with swagger, run the api server with
 // Add the property `revisionHistoryLimit` to your deployment resource to be specify the revision limits to store
 // defaults to 2 
 
+# Statefull sets 
+To create a stateful set you will need 2 or 3 different types of objects: 
 
+- PersistentVolumes (Only if you don't support dynamic provisioning of persistenVolumes)
+- A governing service required by the Statefulset
+- The stateful set itself
 
  
  
