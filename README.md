@@ -407,6 +407,9 @@ example: `kubectl set image deployment kubia nodejs=luksa/kubia:v2`
 // To test and validate your yaml resource file 
 `k apply --dry-run=true -f <file-name>.yml`
 
+// To check the health of the controlplane components 
+`kubectl get componentstatuses`
+
 ## Editing a resource 
 
 `kubectl edit`: Opens the object’s manifest in your default editor. After making changes, saving the file, and exiting the editor, the object is updated.
