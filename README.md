@@ -529,6 +529,9 @@ N.B: > k8s api is on port 8001
 
 To list all your end points for k8s api
 
+To get a list of all the resources types you have including custom resources (CR)
+`kubectl api-resources`
+
 ```
 // in separate shell run
 kubectl proxy
